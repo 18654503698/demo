@@ -41,6 +41,17 @@
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <!--mysql 驱动包-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--德鲁伊数据源-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.20</version>
+        </dependency>
     </dependencies>
 
     <build>
