@@ -31,5 +31,6 @@ public class JdbcRealmTest {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken("张三","1");
         subject.login(token);
+
     }
 }
