@@ -39,7 +39,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>RELEASE</version>
+            <version>4.12</version>
         </dependency>
         <!--mysql 驱动包-->
         <dependency>
