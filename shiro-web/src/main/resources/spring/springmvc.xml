@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--设置扫描包的路径-->
+    <context:component-scan base-package="com.xuexi.controller"></context:component-scan>
+    <!--创建shirofilter实体类-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="login.html"/>
+        <property name="unauthorizedUrl" value="403.html"/><!--未认证的跳转页面-->
+        <property name="filterChainDefinitions">
+            <value>
+                /login.html = anon
+                /* = authc
+            </value>
+        </property>
+    </bean>
+
+    <!--创建securityManager 对象-->
+    <bean id="securityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
+        <property name="realm" ref="userRealm"></property>
+    </bean>
+    <!--创建自定义Realm对象-->
+    <bean id="userRealm" class="com.xuexi.shiro.UserRealm"></bean>
+</beans>
