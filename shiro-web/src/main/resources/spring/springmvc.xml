@@ -11,7 +11,7 @@
         <property name="loginUrl" value="login.html"/>
         <property name="unauthorizedUrl" value="403.html"/><!--未认证的跳转页面-->
         <property name="filterChainDefinitions">
-            <value>
+            <value><!--anon 不需要任何验证   authc  需要验证的   自上而下符号添加就跳出-->
                 /login.html = anon
                 /* = authc
             </value>
