@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user/")
 public class UserController {
+
     @RequestMapping("login")
     public String login(User user) {
-        //
-        Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(),user.getPassword());
         try {
+            Subject subject = SecurityUtils.getSubject();
+            UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(),user.getPassword());
             subject.login(token);
         } catch (AuthenticationException e) {
-            return e.getMessage();
+            e.printStackTrace();
         }
         return "登录成功";
     }

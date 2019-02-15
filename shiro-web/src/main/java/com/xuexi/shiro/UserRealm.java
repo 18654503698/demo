@@ -42,6 +42,11 @@ public class UserRealm extends AuthorizingRealm {
         return authorizationInfo;
     }
 
+    /**
+     * 临时设置下信息
+     * @param userName
+     * @return
+     */
     private Set<String> getRolesByUserName(String userName) {
         Set<String> sets = new HashSet<String>();
         sets.add("admin");
@@ -85,6 +90,10 @@ public class UserRealm extends AuthorizingRealm {
         return userMap.get(username);
     }
 
+    /**
+     * 常量加盐生成加密的密文
+     * @param args
+     */
     public static void main(String[] args) {
         Md5Hash md5Hash = new Md5Hash("123456","salt");
         System.out.println(md5Hash);

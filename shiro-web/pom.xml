@@ -42,6 +42,7 @@
       <artifactId>spring-webmvc</artifactId>
       <version>RELEASE</version>
     </dependency>
+    <!--shiro包-->
     <dependency>
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-core</artifactId>
@@ -52,6 +53,7 @@
       <artifactId>shiro-spring</artifactId>
       <version>RELEASE</version>
     </dependency>
+    <!--shiroweb 包-->
     <dependency>
       <groupId>shiro-web</groupId>
       <artifactId>shiro-web</artifactId>
@@ -69,11 +71,6 @@
           <version>5.1.3.RELEASE</version>
           <scope>compile</scope>
       </dependency>
-      <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-api</artifactId>
-          <version>1.7.5</version>
-      </dependency>
     <!--单元测试包-->
     <dependency>
       <groupId>junit</groupId>
@@ -81,4 +78,5 @@
       <version>4.12</version>
     </dependency>
   </dependencies>
+
 </project>

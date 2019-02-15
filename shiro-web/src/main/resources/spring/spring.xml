@@ -3,12 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--创建shirofilter实体类-->
-    <bean id="shirofilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="login.html"/>
+        <property name="loginUrl" value="login.html"/><!--登录页的url-->
         <property name="unauthorizedUrl" value="403.html"/><!--未认证的跳转页面-->
-        <property name="filterChainDefinitions">
-            <value><!--anon 不需要任何验证   authc  需要验证的   自上而下符号添加就跳出-->
+        <property name="filterChainDefinitions"><!--过滤器链 -->
+            <value><!--anon 不需要任何验证   authc需要验证的   自上而下符号添加就跳出-->
                 /login.html = anon
                 /* = authc
             </value>
@@ -16,17 +16,16 @@
     </bean>
 
     <!--创建securityManager 对象-->
-   <bean id="securityManager" class="org.apache.shiro.mgt.DefaultSecurityManager">
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="realm"></property>
     </bean>
-   <!-- 创建自定义Realm对象-->
-    <bean  class="com.xuexi.shiro.UserRealm" id="realm">
+    <!--创建自定义Realm对象-->
+    <bean id="realm" class="com.xuexi.shiro.UserRealm">
         <!--将加密方式设置到自定义Realm中-->
-        <property name="cacheManager" ref="credentialsMatcher"></property>
+        <property name="credentialsMatcher" ref="credentialsMatcher"></property>
     </bean>
-    <!--加密管理器对象-->
     <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher" id="credentialsMatcher">
-        <property name="hashAlgorithmName" value="md5"></property>
-        <property name="hashIterations" value="1"></property>
+        <property name="hashAlgorithmName" value="md5"></property><!--加密算法-->
+        <property name="hashIterations" value="1"></property><!--加密次数-->
     </bean>
 </beans>
