@@ -24,6 +24,7 @@ public class UserRealm extends AuthorizingRealm {
     {
         userMap.put("张三","f51703256a38e6bab3d9410a070c32ea");
         super.setName("customRealm");
+//        super.setName("123123");  //这里设置是错误的，下面的认证过程还是正确的，没找到原因，最后解决下
     }
     /**
      * 授权
@@ -71,11 +72,12 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         //1 从主体传过来的认证信息中，获得用户名
         String username = (String)authenticationToken.getPrincipal();
-        //2 通过用户名到数据库获取凭证
+        //2 通过用户名到数据库获取凭证（该凭证就是用户名和salt 加密后的密文）
         String password = getPasswordByUserName(username);
         if(password == null) {
              return null;
         }
+        //
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo("张三",password,"customRealm");
         authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes("salt"));//加盐
         return authenticationInfo;
