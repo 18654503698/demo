@@ -99,5 +99,11 @@ public class UserRealm extends AuthorizingRealm {
     public static void main(String[] args) {
         Md5Hash md5Hash = new Md5Hash("123456","salt");
         System.out.println(md5Hash);
+
+        String str = "12345abc";
+        byte[] bytes = str.getBytes();
+        for(byte b: bytes) {
+            System.out.println(b);
+        }
     }
 }
